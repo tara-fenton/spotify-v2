@@ -13,4 +13,9 @@ router.get("/", function(req, res) {
     });
 });
 
+// GET /songs/new
+router.get("/new", function(req, res) {
+  res.render("songs/new", { title: "Add a Song" });
+});
+
 module.exports = router;
