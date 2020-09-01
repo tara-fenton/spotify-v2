@@ -16,4 +16,7 @@ router.get("/:id/edit", songsController.edit);
 // PUT /songs/:id
 router.put("/:id", songsController.update);
 
+// DELETE /songs/:id
+router.delete("/:id", songsController.delete);
+
 module.exports = router;
