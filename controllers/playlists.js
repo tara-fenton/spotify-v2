@@ -1,4 +1,5 @@
 const Playlist = require("../models/playlist");
+const Song = require("../models/song");
 
 module.exports = {
   index,
@@ -14,6 +15,9 @@ function index(req, res) {
     .populate("user")
     .exec(function(err, playlists) {
       console.log(playlists);
+
+      // Song.find(function(err, playlists) {);
+
       res.render("playlists/index", { title: "All playlists", playlists });
     });
 }

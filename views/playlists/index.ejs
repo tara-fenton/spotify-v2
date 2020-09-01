@@ -10,17 +10,22 @@
    
     <div>
         <div class="container">
-            <% playlists.forEach(function(s) {%>
+            <% playlists.forEach(function(p) {%>
             <div>
-                <a href="playlists/<%=s._id%>"><%=s.title%></a>
+                <a href="playlists/<%=p._id%>"><%=p.title%></a>
 
             </div>
+            <% p.songs.forEach(function(s) {%>
+            <div>
+              <%=s%>
 
+          </div>
+          <% }); %>
 
             </a>
-            <td><a href="/playlists/<%= s._id %>/edit">Edit</a>
+            <td><a href="/playlists/<%= p._id %>/edit">Edit</a>
             </td>
-            <form action='/playlists/<%= s._id %>?_method=DELETE' method="POST"><button>X</button></form>
+            <form action='/playlists/<%= p._id %>?_method=DELETE' method="POST"><button>X</button></form>
     
         </div>
         <% }); %>
