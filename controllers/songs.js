@@ -1,5 +1,4 @@
 const Song = require("../models/song");
-// const Song = require("../models/song");
 
 module.exports = {
   index,

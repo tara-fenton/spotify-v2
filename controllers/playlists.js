@@ -32,7 +32,7 @@ function create(req, res) {
 
 function edit(req, res) {
   Playlist.findById(req.params.id, function(err, playlist) {
-    res.render("playlists/edit", { title: "Edit playlist", playlist });
+    res.render("playlists/edit", { title: "Edit Playlist", playlist });
   });
 }
 
