@@ -3,9 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>><%= title %></title>
   </head>
   <body>
-    hi im songs
-  </body>
-</html>
+    <h1><%= title %></h1>
+   
+    <div>
+        <div class="container">
+            <% songs.forEach(function(s) {%>
+            <div>
+                <a href="songs/<%=s._id%>"><%=s.title%></a>
+
+            </div>
+
+
+            </a>
+            <td><a href="/songs/<%= s._id %>/edit">Edit</a>
+            </td>
+    
+        </div>
+        <% }); %>
+    </div>
+    <a href="/songs/new">Add Song</a>
+    </body>
+    
+    </html>
