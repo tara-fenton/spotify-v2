@@ -20,6 +20,7 @@
             </a>
             <td><a href="/playlists/<%= s._id %>/edit">Edit</a>
             </td>
+            <form action='/playlists/<%= s._id %>?_method=DELETE' method="POST"><button>X</button></form>
     
         </div>
         <% }); %>

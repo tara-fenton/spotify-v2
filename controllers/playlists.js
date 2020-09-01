@@ -6,6 +6,7 @@ module.exports = {
   create,
   edit,
   update,
+  delete: deletePlaylist,
 };
 
 function index(req, res) {
@@ -40,6 +41,15 @@ function update(req, res) {
   Playlist.findByIdAndUpdate(req.params.id, req.body, function(err, playlist) {
     if (err) {
       res.render("playlists/edit", { title: "Edit Playlist", playlist });
+    }
+    res.redirect("/playlists");
+  });
+}
+
+function deletePlaylist(req, res) {
+  Playlist.findByIdAndDelete(req.params.id, function(err, playlist) {
+    if (err) {
+      console.log(err);
     }
     res.redirect("/playlists");
   });

@@ -16,4 +16,7 @@ router.get("/:id/edit", playlistsController.edit);
 // PUT /playlists/:id
 router.put("/:id", playlistsController.update);
 
+// DELETE /playlists/:id
+router.delete("/:id", playlistsController.delete);
+
 module.exports = router;
