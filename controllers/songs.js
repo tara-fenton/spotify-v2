@@ -6,6 +6,7 @@ module.exports = {
   new: newSong,
   create,
   edit,
+  update,
 };
 
 function index(req, res) {
@@ -33,5 +34,14 @@ function create(req, res) {
 function edit(req, res) {
   Song.findById(req.params.id, function(err, song) {
     res.render("songs/edit", { title: "Edit song", song });
+  });
+}
+
+function update(req, res) {
+  Song.findByIdAndUpdate(req.params.id, req.body, function(err, song) {
+    if (err) {
+      res.render("songs/edit", { title: "Edit Song", song });
+    }
+    res.redirect("/songs");
   });
 }
