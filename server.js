@@ -11,6 +11,7 @@ require("./config/passport");
 
 var indexRouter = require("./routes/index");
 var songsRouter = require("./routes/songs");
+var playlistsRouter = require("./routes/playlists");
 
 var app = express();
 
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/songs", songsRouter);
+app.use("/playlists", playlistsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
