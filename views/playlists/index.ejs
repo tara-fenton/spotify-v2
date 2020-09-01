@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>><%= title %></title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+   
+    <div>
+        <div class="container">
+            <% playlists.forEach(function(s) {%>
+            <div>
+                <a href="playlists/<%=s._id%>"><%=s.title%></a>
+
+            </div>
+
+
+            </a>
+            <td><a href="/playlists/<%= s._id %>/edit">Edit</a>
+            </td>
+    
+        </div>
+        <% }); %>
+    </div>
+    <a href="/playlists/new">Add Playlist</a>
+    </body>
+    
+    </html>
