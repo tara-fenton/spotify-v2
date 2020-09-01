@@ -11,9 +11,9 @@ router.get("/new", playlistsController.new);
 // POST /playlists
 router.post("/", playlistsController.create);
 
-// GET /playlists/:id
+// GET /playlists/:id/edit
 router.get("/:id/edit", playlistsController.edit);
-// PUT /playlists/:id/edit
+// PUT /playlists/:id
 router.put("/:id", playlistsController.update);
 
 module.exports = router;

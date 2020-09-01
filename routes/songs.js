@@ -11,9 +11,9 @@ router.get("/new", songsController.new);
 // POST /songs
 router.post("/", songsController.create);
 
-// GET /songs/:id
+// GET /songs/:id/edit
 router.get("/:id/edit", songsController.edit);
-// PUT /songs/:id/edit
+// PUT /songs/:id
 router.put("/:id", songsController.update);
 
 module.exports = router;
