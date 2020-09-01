@@ -8,6 +8,7 @@ module.exports = {
   edit,
   update,
   delete: deletePlaylist,
+  show,
 };
 
 function index(req, res) {
@@ -15,9 +16,6 @@ function index(req, res) {
     .populate("user")
     .exec(function(err, playlists) {
       console.log(playlists);
-
-      // Song.find(function(err, playlists) {);
-
       res.render("playlists/index", { title: "All playlists", playlists });
     });
 }
@@ -56,5 +54,27 @@ function deletePlaylist(req, res) {
       console.log(err);
     }
     res.redirect("/playlists");
+  });
+}
+
+function show(req, res) {
+  Playlist.findById(req.params.id, function(err, playlist) {
+    console.log("hmmm ", playlist.songs);
+    Song.find({ _id: playlist.songs })
+      .populate("user")
+      .exec(function(err, songs) {
+        console.log(songs);
+        res.render("playlists/show", {
+          title: "Playlist Details",
+          playlist,
+          songs,
+        });
+      });
+    // const playlistSongs = [];
+    // const songs = playlist.songs.forEach(function(err, song) {
+    //   console.log("all of th things", playlist.songs[song]);
+    //   playlistSongs.push(playlist.songs[song]);
+    // });
+    // console.log("songggs", songs);
   });
 }
