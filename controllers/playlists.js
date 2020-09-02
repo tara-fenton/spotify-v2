@@ -80,9 +80,7 @@ function addSongToPlaylist(req, res) {
       playlist.songs.push(song);
       playlist.save(function(err) {
         if (err) return res.render("playlists/");
-        Song.find(function(err, songs) {
-          res.redirect(`/playlists/${req.params.id}`);
-        });
+        res.redirect(`/playlists/${req.params.id}`);
       });
     });
   });
@@ -94,9 +92,7 @@ function deleteSongFromPlaylist(req, res) {
       playlist.songs.pull(song);
       playlist.save(function(err) {
         if (err) return res.render("playlists/");
-        Song.find(function(err, songs) {
-          res.redirect(`/playlists/${req.params.id}`);
-        });
+        res.redirect(`/playlists/${req.params.id}`);
       });
     });
   });
