@@ -1,9 +1,15 @@
 var mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var playlistSchema = new mongoose.Schema(
+var playlistSchema = new Schema(
   {
     title: String,
-    songs: [String],
+    songs: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Song",
+      },
+    ],
   },
   {
     timestamps: true,

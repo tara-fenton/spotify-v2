@@ -22,4 +22,13 @@ router.delete("/:id", playlistsController.delete);
 // GET /playlists/:id
 router.get("/:id", playlistsController.show);
 
+// POST /playlists/:id/songs/:songId
+router.post("/:id/songs/:song_id", playlistsController.addSongToPlaylist);
+
+// DELETE /playlists/:id/songs/:songId
+router.delete(
+  "/:id/songs/:song_id",
+  playlistsController.deleteSongFromPlaylist
+);
+
 module.exports = router;

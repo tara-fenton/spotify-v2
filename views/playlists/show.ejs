@@ -6,17 +6,27 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1><%= title %></h1>
-   
+    <h1><%= title %></h1>  
     <div>
-        <div><%= playlist.title %></div>
-        <% playlist.songs.forEach(function(p) {%>
+        <div>Only the songs in this <%= playlist.title %></div>  
+          <div>
+              <% playlistSongs.forEach(function(songs) {%>
+                <ul>
+                  <li>
+                    <%= songs.title %>
+                  </li>
+                </ul>
+              <% }); %> 
+          </div>
+          <h1>All of the songs</h1>
             <div>
-                song object:<%= songs.filter(song => song._id == p)%>
-               
-
+              <% allSongs.forEach(function(s) {%>
+                <ul>
+                  <li><%= s.title%> 
+                    <form action='<%= playlist._id %>/songs/<%= s._id %>' method="POST"><button>+</button></form></li>
+                    <form action='<%= playlist._id %>/songs/<%= s._id %>?_method=DELETE' method="POST"><button>-</button></form></li>
+                </ul>
+              <% }); %>  
             </div>
-            <% }); %>  
     </body>
-    
     </html>

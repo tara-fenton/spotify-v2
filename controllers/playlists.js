@@ -9,15 +9,14 @@ module.exports = {
   update,
   delete: deletePlaylist,
   show,
+  addSongToPlaylist,
+  deleteSongFromPlaylist,
 };
 
 function index(req, res) {
-  Playlist.find({})
-    .populate("user")
-    .exec(function(err, playlists) {
-      console.log(playlists);
-      res.render("playlists/index", { title: "All playlists", playlists });
-    });
+  Playlist.find(function(err, playlists) {
+    res.render("playlists/index", { title: "All playlists", playlists });
+  });
 }
 
 function newPlaylist(req, res) {
@@ -26,7 +25,7 @@ function newPlaylist(req, res) {
 
 function create(req, res) {
   const playlist = new Playlist(req.body);
-  console.log(playlist);
+  // console.log(playlist);
   playlist.save(function(err) {
     if (err) return res.render("playlists/new");
     res.redirect("/playlists");
@@ -59,22 +58,46 @@ function deletePlaylist(req, res) {
 
 function show(req, res) {
   Playlist.findById(req.params.id, function(err, playlist) {
-    console.log("hmmm ", playlist.songs);
-    Song.find({ _id: playlist.songs })
-      .populate("user")
-      .exec(function(err, songs) {
-        console.log(songs);
-        res.render("playlists/show", {
-          title: "Playlist Details",
-          playlist,
-          songs,
+    Song.find(function(err, allSongs) {
+      Song.find()
+        .where("_id")
+        .in(playlist.songs)
+        .exec((err, playlistSongs) => {
+          res.render("playlists/show", {
+            title: "Playlist Details",
+            playlist,
+            allSongs,
+            playlistSongs,
+          });
+        });
+    });
+  });
+}
+
+function addSongToPlaylist(req, res) {
+  Song.findById(req.params.song_id, function(err, song) {
+    Playlist.findById(req.params.id, function(err, playlist) {
+      playlist.songs.push(song);
+      playlist.save(function(err) {
+        if (err) return res.render("playlists/");
+        Song.find(function(err, songs) {
+          res.redirect(`/playlists/${req.params.id}`);
         });
       });
-    // const playlistSongs = [];
-    // const songs = playlist.songs.forEach(function(err, song) {
-    //   console.log("all of th things", playlist.songs[song]);
-    //   playlistSongs.push(playlist.songs[song]);
-    // });
-    // console.log("songggs", songs);
+    });
+  });
+}
+
+function deleteSongFromPlaylist(req, res) {
+  Song.findById(req.params.song_id, function(err, song) {
+    Playlist.findById(req.params.id, function(err, playlist) {
+      playlist.songs.pull(song);
+      playlist.save(function(err) {
+        if (err) return res.render("playlists/");
+        Song.find(function(err, songs) {
+          res.redirect(`/playlists/${req.params.id}`);
+        });
+      });
+    });
   });
 }
