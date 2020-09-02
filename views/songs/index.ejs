@@ -7,27 +7,22 @@
   </head>
   <body>
     <%- include('../partials/nav') %>
-   
     <div>
-        <div class="container">
-            <% songs.forEach(function(s) {%>
-            <div>
-                <a href="songs/<%=s._id%>"><%=s.title%></a>
-
-            </div>
-
-
-            </a>
-            <td><a href="/songs/<%= s._id %>/edit">Edit</a>
-            </td>
-            <td><form action='/songs/<%= s._id %>?_method=DELETE' method="POST"><button>X</button></form>
-             
-            </td>
-    
-        </div>
-        <% }); %>
+      <div class="container">
+        <% songs.forEach(function(s) {%>
+        <div>Title: <%=s.title%></div>
+        <div>Artist: <%=s.artist%></div>
+        <td><a href="/songs/<%= s._id %>/edit">Edit</a></td>
+        <td>
+          <form action="/songs/<%= s._id %>?_method=DELETE" method="POST">
+            <button>X</button>
+          </form>
+        </td>
+      </div>
+      <hr />
+      <% }); %>
     </div>
-    <a href="/songs/new">Add Song</a>
-    </body>
-    
-    </html>
+    <br />
+    <a href="/songs/new">ADD SONG</a>
+  </body>
+</html>
