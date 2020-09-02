@@ -6,7 +6,8 @@
     <title><%= title %></title>
   </head>
   <body>
-    <%- include('../partials/nav') %>
+    <%- include('../partials/nav') %> <% if (user) { %>
+
     <div class="container">
       <% playlists.forEach(function(p) {%>
       <div>
@@ -22,6 +23,14 @@
       <% }); %>
     </div>
     <br />
-    <a href="/playlists/new">ADD NEW PLAYLIST</a>
+    <a href="/playlists/new">ADD NEW PLAYLIST</a> <% } %>
+
+    <h1>All Playlists</h1>
+    <div class="container">
+      <% playlists.forEach(function(p) {%>
+      <div><h3><%=p.title%></h3></div>
+
+      <% }); %>
+    </div>
   </body>
 </html>

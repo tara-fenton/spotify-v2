@@ -14,34 +14,51 @@ module.exports = {
 };
 
 function index(req, res) {
+  console.log(Playlist);
   Playlist.find(function(err, playlists) {
-    res.render("playlists/index", { title: "All playlists", playlists });
+    res.render("playlists/index", {
+      title: "My playlists",
+      playlists,
+      user: req.user,
+    });
   });
 }
 
 function newPlaylist(req, res) {
-  res.render("playlists/new", { title: "Add a playlist" });
+  res.render("playlists/new", { title: "Add a playlist", user: req.user });
 }
 
 function create(req, res) {
   const playlist = new Playlist(req.body);
   // console.log(playlist);
   playlist.save(function(err) {
-    if (err) return res.render("playlists/new");
+    if (err)
+      return res.render("playlists/new", {
+        title: "Add a playlist",
+        user: req.user,
+      });
     res.redirect("/playlists");
   });
 }
 
 function edit(req, res) {
   Playlist.findById(req.params.id, function(err, playlist) {
-    res.render("playlists/edit", { title: "Edit Playlist Title", playlist });
+    res.render("playlists/edit", {
+      title: "Edit Playlist Title",
+      playlist,
+      user: req.user,
+    });
   });
 }
 
 function update(req, res) {
   Playlist.findByIdAndUpdate(req.params.id, req.body, function(err, playlist) {
     if (err) {
-      res.render("playlists/edit", { title: "Edit Playlist", playlist });
+      res.render("playlists/edit", {
+        title: "Edit Playlist",
+        playlist,
+        user: req.user,
+      });
     }
     res.redirect("/playlists");
   });
@@ -68,6 +85,7 @@ function show(req, res) {
             playlist,
             allSongs,
             playlistSongs,
+            user: req.user,
           });
         });
     });

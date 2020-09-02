@@ -31,4 +31,13 @@ router.delete(
   playlistsController.deleteSongFromPlaylist
 );
 
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    res.locals.userID = req.user._id;
+    return next();
+  } else {
+    res.redirect("/auth/google");
+  }
+}
+
 module.exports = router;
