@@ -7,30 +7,21 @@
   </head>
   <body>
     <h1><%= title %></h1>
-   
-    <div>
-        <div class="container">
-            <% playlists.forEach(function(p) {%>
-            <div>
-                <a href="/playlists/<%=p._id%>"><%=p.title%></a>
+    <div class="container">
+      <% playlists.forEach(function(p) {%>
+      <div>
+        <h3><%=p.title%></h3>
+        <a href="/playlists/<%=p._id%>">Add Songs to Playlist</a>
+      </div>
 
-            </div>
-            <% p.songs.forEach(function(s) {%>
-            <div>
-              <%=s%>
-
-          </div>
-          <% }); %>
-
-            </a>
-            <td><a href="/playlists/<%= p._id %>/edit">Edit</a>
-            </td>
-            <form action='/playlists/<%= p._id %>?_method=DELETE' method="POST"><button>X</button></form>
-    
-        </div>
-        <% }); %>
+      <td><a href="/playlists/<%= p._id %>/edit">Edit Playlist Title</a></td>
+      <form action="/playlists/<%= p._id %>?_method=DELETE" method="POST">
+        <button>X</button>
+      </form>
+      <hr />
+      <% }); %>
     </div>
-    <a href="/playlists/new">Add Playlist</a>
-    </body>
-    
-    </html>
+    <br />
+    <a href="/playlists/new">ADD NEW PLAYLIST</a>
+  </body>
+</html>
