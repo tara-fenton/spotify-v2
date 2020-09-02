@@ -6,7 +6,7 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1><%= title %></h1>
+    <%- include('../partials/nav') %>
     <form action="/songs" method="POST">
       Title:<input type="text" name="title" /> Artist:<input
         type="text"

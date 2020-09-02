@@ -6,7 +6,7 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1><%= title %></h1>
+    <%- include('../partials/nav') %>
     <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
       Title:<input type="text" name="title" value="<%- playlist.title %>" />
       <button>Update Playlist</button>
