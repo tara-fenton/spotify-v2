@@ -14,7 +14,6 @@ module.exports = {
 };
 
 function index(req, res) {
-  console.log(Playlist);
   Playlist.find(function(err, playlists) {
     res.render("playlists/index", {
       title: "My playlists",
@@ -30,6 +29,7 @@ function newPlaylist(req, res) {
 
 function create(req, res) {
   const playlist = new Playlist(req.body);
+  playlist.user = req.user._id;
   // console.log(playlist);
   playlist.save(function(err) {
     if (err)

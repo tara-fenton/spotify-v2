@@ -28,8 +28,12 @@
     <h1>All Playlists</h1>
     <div class="container">
       <% playlists.forEach(function(p) {%>
-      <div><h3><%=p.title%></h3></div>
+      <div>
+        <h3><%=p.title%></h3>
+        <a href="/playlists/<%=p._id%>">Add Songs to Playlist</a>
+      </div>
 
+      <hr />
       <% }); %>
     </div>
   </body>

@@ -10,6 +10,10 @@ var playlistSchema = new Schema(
         ref: "Song",
       },
     ],
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,

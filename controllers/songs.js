@@ -14,12 +14,12 @@ function index(req, res) {
     .populate("user")
     .exec(function(err, songs) {
       console.log(songs);
-      res.render("songs/index", { title: "All Songs", songs });
+      res.render("songs/index", { title: "All Songs", songs, user: req.user });
     });
 }
 
 function newSong(req, res) {
-  res.render("songs/new", { title: "Add a Song" });
+  res.render("songs/new", { title: "Add a Song", user: req.user });
 }
 
 function create(req, res) {
@@ -33,7 +33,7 @@ function create(req, res) {
 
 function edit(req, res) {
   Song.findById(req.params.id, function(err, song) {
-    res.render("songs/edit", { title: "Edit song", song });
+    res.render("songs/edit", { title: "Edit song", song, user: req.user });
   });
 }
 
