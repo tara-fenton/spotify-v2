@@ -1,8 +1,11 @@
 <%- include('../partials/header') %>
 
-<form action="/songs" method="POST">
-  Title:<input type="text" name="title" /> Artist:<input type="text" name="artist" />
-  <button>Add a Song</button>
-</form>
-
-<<%- include('../partials/footer') %>
+<div>
+  <div class="container">
+    <form action="/songs" method="POST">
+      Title:<input type="text" name="title" /> Artist:<input type="text" name="artist" />
+      <button>Add a Song</button>
+    </form>
+  </div>
+</div>
+<%- include('../partials/footer') %>

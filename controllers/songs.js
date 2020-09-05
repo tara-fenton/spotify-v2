@@ -14,7 +14,7 @@ function index(req, res) {
     .populate("user")
     .exec(function(err, songs) {
       console.log(songs);
-      res.render("songs/index", { title: "All Songs", songs, user: req.user });
+      res.render("songs", { title: "All Songs", songs, user: req.user });
     });
 }
 

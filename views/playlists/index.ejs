@@ -22,7 +22,7 @@
   <% playlists.forEach(function(p) {%>
   <div>
     <h3><%=p.title%></h3>
-    <a href="/playlists/<%=p._id%>">Add Songs to Playlist</a>
+    <form action="/playlists/<%=p._id%>"><button>Add Songs to Playlist</button></form>
   </div>
 
   <hr />
