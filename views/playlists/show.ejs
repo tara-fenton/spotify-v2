@@ -1,37 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= title %></title>
-</head>
-
-<body>
-  <%- include('../partials/header') %>
+<%- include('../partials/header') %>
+<div>
+  <div>Only the songs in this <%= playlist.title %></div>
   <div>
-    <div>Only the songs in this <%= playlist.title %></div>
-    <div>
-      <% playlistSongs.forEach(function(songs) {%>
-      <ul>
-        <li>
-          <%= songs.title %>
-        </li>
-      </ul>
-      <% }); %>
-    </div>
-    <h1>All of the songs</h1>
-    <div>
-      <% allSongs.forEach(function(s) {%>
-      <ul>
-        <li><%= s.title%>
-          <form action='<%= playlist._id %>/songs/<%= s._id %>' method="POST"><button>+</button></form>
-        </li>
-        <form action='<%= playlist._id %>/songs/<%= s._id %>?_method=DELETE' method="POST"><button>-</button></form>
-        </li>
-      </ul>
-      <% }); %>
-    </div>
-</body>
+    <% playlistSongs.forEach(function(songs) {%>
+    <ul>
+      <li>
+        <%= songs.title %>
+      </li>
+    </ul>
+    <% }); %>
+  </div>
+  <h1>All of the songs</h1>
+  <div>
+    <% allSongs.forEach(function(s) {%>
+    <ul>
+      <li><%= s.title%>
+        <form action='<%= playlist._id %>/songs/<%= s._id %>' method="POST"><button>+</button></form>
+      </li>
+      <form action='<%= playlist._id %>/songs/<%= s._id %>?_method=DELETE' method="POST"><button>-</button></form>
+      </li>
+    </ul>
+    <% }); %>
+  </div>
+  </body>
 
-</html>
+  </html>

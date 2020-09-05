@@ -1,43 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../partials/header') %> <% if (user) { %>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= title %></title>
-</head>
-
-<body>
-  <%- include('../partials/header') %> <% if (user) { %>
-
-  <div class="container">
-    <% playlists.forEach(function(p) {%>
-    <div>
-      <h3><%=p.title%></h3>
-      <a href="/playlists/<%=p._id%>">Add Songs to Playlist</a>
-    </div>
-
-    <td><a href="/playlists/<%= p._id %>/edit">Edit Playlist Title</a></td>
-    <form action="/playlists/<%= p._id %>?_method=DELETE" method="POST">
-      <button>X</button>
-    </form>
-    <hr />
-    <% }); %>
+<div class="container">
+  <% playlists.forEach(function(p) {%>
+  <div>
+    <h3><%=p.title%></h3>
+    <a href="/playlists/<%=p._id%>">Add Songs to Playlist</a>
   </div>
-  <br />
-  <a href="/playlists/new">ADD NEW PLAYLIST</a> <% } %>
 
-  <h1>All Playlists</h1>
-  <div class="container">
-    <% playlists.forEach(function(p) {%>
-    <div>
-      <h3><%=p.title%></h3>
-      <a href="/playlists/<%=p._id%>">Add Songs to Playlist</a>
-    </div>
+  <td><a href="/playlists/<%= p._id %>/edit">Edit Playlist Title</a></td>
+  <form action="/playlists/<%= p._id %>?_method=DELETE" method="POST">
+    <button>X</button>
+  </form>
+  <hr />
+  <% }); %>
+</div>
+<br />
+<a href="/playlists/new">ADD NEW PLAYLIST</a> <% } %>
 
-    <hr />
-    <% }); %>
+<h1>All Playlists</h1>
+<div class="container">
+  <% playlists.forEach(function(p) {%>
+  <div>
+    <h3><%=p.title%></h3>
+    <a href="/playlists/<%=p._id%>">Add Songs to Playlist</a>
   </div>
+
+  <hr />
+  <% }); %>
+</div>
 </body>
 
 </html>
