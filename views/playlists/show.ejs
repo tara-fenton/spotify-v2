@@ -13,15 +13,13 @@
   </div>
   <h1>All of the songs</h1>
   <div>
-    <% allSongs.forEach(function(s) {%>
-    <ul>
-      <li><%= s.title%>
-        <form action='<%= playlist._id %>/songs/<%= s._id %>' method="POST"><button>+</button></form>
-      </li>
-      <form action='<%= playlist._id %>/songs/<%= s._id %>?_method=DELETE' method="POST"><button>-</button></form>
-      </li>
-    </ul>
-    <% }); %>
+
+    <select>
+      <% allSongs.forEach(function(s) {%>
+      <option name="<%= s.title %>"><%= s.title%></option>
+      <% }); %>
+    </select>
+
   </div>
 
   <%- include('../partials/footer') %>
