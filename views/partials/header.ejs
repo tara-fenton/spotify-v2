@@ -17,5 +17,11 @@
 
     <a href="/playlists">Playlists</a> <a href="/songs">Songs</a>
   </nav>
+  <div class="login"><% if (user) { %>
+    <a href="/logout">Log Out</a>
+    <% } else { %>
+    <a href="/auth/google"></i>Login with Google</a>
+    <% } %></div>
+  </div>
   <h1><%= title %></h1>
   <!-- prettier-ignore-attribute -->

@@ -9,6 +9,19 @@ html {
   color: white;
 }
 
-html:hover {
+.container {
+  display: flex;
+  text-align: center;
+  height: 100vh;
+  border-radius: 30px;
+  /* border: 1px solid; */
+  padding: 20px;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+a:visited {
   text-decoration: none;
 }
