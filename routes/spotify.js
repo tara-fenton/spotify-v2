@@ -10,9 +10,7 @@
 var express = require("express"); // Express web server framework
 var router = express.Router();
 var request = require("request"); // "Request" library
-var cors = require("cors");
 var querystring = require("querystring");
-var cookieParser = require("cookie-parser");
 
 var client_id = "9322e3c91c734079a80f99878ebc2543"; // Your client id
 var client_secret = "d04d1992dcf64d18b6d90b8cbb386212"; // Your secret
@@ -35,13 +33,6 @@ var generateRandomString = function(length) {
 };
 
 var stateKey = "spotify_auth_state";
-
-// var app = express();
-
-// router
-//   .use(express.static(__dirname + "/public"))
-//   .use(cors())
-//   .use(cookieParser());
 
 router.get("/login", function(req, res) {
   var state = generateRandomString(16);
@@ -156,6 +147,8 @@ router.get("/refresh_token", function(req, res) {
   });
 });
 
-// console.log("Listening on 8888");
-// router.listen(8888);
+router.get("/logout", function(req, res) {
+  res.redirect("/");
+});
+
 module.exports = router;
